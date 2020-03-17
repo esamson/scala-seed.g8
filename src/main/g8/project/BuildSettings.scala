@@ -15,7 +15,7 @@ object BuildSettings {
       if (name.contains('/')) {
         val org = name.split('/').dropRight(1).mkString(".")
         project.settings(
-          organization := s"${organization.value}.$org"
+          organization := s"\${organization.value}.\$org"
         )
       } else {
         project
@@ -68,9 +68,9 @@ object BuildSettings {
     "-language:experimental.macros", // Allow macro definition (besides implementation and application)
     "-Xcheckinit", // Wrap field accessors to throw an exception on uninitialized access.
     "-Ybackend-parallelism",
-    s"${sys.runtime.availableProcessors()}", // maximum worker threads for backend
+    s"\${sys.runtime.availableProcessors()}", // maximum worker threads for backend
     "-Ybackend-worker-queue",
-    s"${sys.runtime.availableProcessors() * 2}", // backend threads worker queue size
+    s"\${sys.runtime.availableProcessors() * 2}", // backend threads worker queue size
     "-Wdead-code", // Warn when dead code is identified.
     "-Wvalue-discard", // Warn when non-Unit expression results are unused.
     "-Wnumeric-widen", // Warn when numerics are widened.
