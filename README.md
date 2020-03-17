@@ -6,7 +6,7 @@ sbt new esamson/scala-seed.g8
 
 Template license
 ----------------
-Written in 2019 by Edward Samson <https://edward.samson.ph/>
+Written in 2018 by Edward Samson <https://edward.samson.ph/>
 
 To the extent possible under law, the author(s) have dedicated all copyright
 and related and neighboring rights to this template to the public domain

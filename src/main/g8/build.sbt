@@ -1,14 +1,13 @@
-import Dependencies._
+import BuildSettings._
 
-ThisBuild / scalaVersion     := "2.13.0"
-ThisBuild / version          := "0.1.0-SNAPSHOT"
-ThisBuild / organization     := "com.example"
+ThisBuild / scalaVersion := "2.13.1"
+ThisBuild / organization := "com.example"
 ThisBuild / organizationName := "example"
 
-lazy val root = (project in file("."))
-  .settings(
-    name := "$name$",
-    libraryDependencies += scalaTest % Test
+lazy val root = Project(id = "$name$", base = file("."))
+  .aggregate(
+    app
   )
 
-// See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
+lazy val app = module("app")
+  .settings(Dependencies.app)
