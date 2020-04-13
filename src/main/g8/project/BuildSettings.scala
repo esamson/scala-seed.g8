@@ -124,7 +124,7 @@ object BuildSettings {
       } else {
         Nil
       }
-      ),
+    ),
     Compile / console / scalacOptions --= Seq(
       "-Wunused:imports",
       "-Xfatal-warnings"

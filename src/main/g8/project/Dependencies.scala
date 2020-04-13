@@ -6,9 +6,8 @@ object Dependencies {
 
   lazy val app = Seq(
     libraryDependencies ++= Compile(
-      betterFiles,
-      scalaLogging,
-      typesafeConfig
+      basedir,
+      scalaLogging
     ),
     libraryDependencies ++= Runtime(
       logbackClassic
@@ -20,15 +19,13 @@ object Dependencies {
 
   object Libs {
 
-    val betterFiles = "com.github.pathikrit" %% "better-files" % "3.8.0"
+    val basedir = "ph.samson.xdg" %% "basedir" % "0.1"
 
     val logbackClassic = "ch.qos.logback" % "logback-classic" % "1.2.3"
 
     val scalaLogging = "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2"
 
     val scalaTest = "org.scalatest" %% "scalatest" % "3.1.1"
-
-    val typesafeConfig = "com.typesafe" % "config" % "1.4.0"
   }
 
   class DepsBuilder(configuration: Configuration, dependencies: Seq[ModuleID]) {
@@ -36,29 +33,29 @@ object Dependencies {
   }
 
   /**
-   * Pimp [[Configuration]] so you can say:
-   *
-   * {{{
-   *   Test(lib1, lib2)
-   * }}}
-   *
-   * To create a DepsBuilder.
-   */
+    * Pimp [[Configuration]] so you can say:
+    *
+    * {{{
+    *   Test(lib1, lib2)
+    * }}}
+    *
+    * To create a DepsBuilder.
+    */
   implicit class DepsBuilderFactory(val configuration: Configuration)
-    extends AnyVal {
+      extends AnyVal {
     def apply(dependencies: ModuleID*) =
       new DepsBuilder(configuration, dependencies)
   }
 
   /**
-   * [[Append.Values]] implementation so you can say:
-   *
-   * {{{
-   *   libraryDependencies ++= Test(lib1, lib2)
-   * }}}
-   *
-   * In your project settings.
-   */
+    * [[Append.Values]] implementation so you can say:
+    *
+    * {{{
+    *   libraryDependencies ++= Test(lib1, lib2)
+    * }}}
+    *
+    * In your project settings.
+    */
   implicit val depsAppend: Append.Values[Seq[ModuleID], DepsBuilder] =
     (a: Seq[sbt.ModuleID], b: DepsBuilder) => a ++ b.result
 }
