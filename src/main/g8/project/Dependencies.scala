@@ -19,7 +19,7 @@ object Dependencies {
 
   object Libs {
 
-    val basedir = "ph.samson.xdg" %% "basedir" % "0.1"
+    val basedir = "ph.samson.xdg" %% "basedir" % "0.2"
 
     val logbackClassic = "ch.qos.logback" % "logback-classic" % "1.2.3"
 
