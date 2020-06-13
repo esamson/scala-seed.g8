@@ -19,13 +19,13 @@ object Dependencies {
 
   object Libs {
 
-    val basedir = "ph.samson.xdg" %% "basedir" % "0.2"
+    val basedir = "ph.samson.xdg" %% "basedir" % "0.4"
 
     val logbackClassic = "ch.qos.logback" % "logback-classic" % "1.2.3"
 
     val scalaLogging = "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2"
 
-    val scalaTest = "org.scalatest" %% "scalatest" % "3.1.1"
+    val scalaTest = "org.scalatest" %% "scalatest" % "3.1.2"
   }
 
   class DepsBuilder(configuration: Configuration, dependencies: Seq[ModuleID]) {
